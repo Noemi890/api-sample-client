@@ -32,7 +32,9 @@ function Meetings() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(meetingData)
     }
-    const data = await client.get(`/contacts/${id}/meetings`, opts)
+
+    // Data was set to "await client.get", but it is a post request. After changing it, the application works ok.
+    const data = await client.post(`/contacts/${id}/meetings`, opts)
     setMeetings([...meetings, data.meeting])
   }
 
